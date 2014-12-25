@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher"
+        android:adjustViewBounds="true"
+        android:id="@+id/imageView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#a0000000"
+        android:layout_alignBottom="@id/imageView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chocolate Cookies with Hazelnut Blah Blah Blah"
+            android:textColor="#ffffffff"
+            android:textSize="24sp"
+            android:id="@+id/topText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="yummy yummy yummy yummy yummy yummy yummy yummy "
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:id="@+id/bottomText"
+            android:layout_below="@id/topText"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

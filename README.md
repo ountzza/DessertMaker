@@ -11,5 +11,15 @@ include ':app','TheCheeseLibrary'
 ```
 add build.gradle
 ```
-   compile project(':TheCheeseLibrary') 
+compile project(':TheCheeseLibrary') 
 ```
+##steps
+- Create MainApplication
+- Add in ManifestFile
+- Copy
+   - Fragment Template
+   - BusEvent Template
+   - CustomView Template
+   - CustomViewGroup Template
+   - Singleton Template
+- add Fragemet in mainView

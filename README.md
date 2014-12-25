@@ -9,3 +9,7 @@ fix setting.gradle
 ```
 include ':app','TheCheeseLibrary'
 ```
+add build.gradle
+```
+   compile project(':TheCheeseLibrary') 
+```

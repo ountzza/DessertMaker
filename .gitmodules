@@ -1,0 +1,3 @@
+[submodule "TheCheeseLibrary"]
+	path = TheCheeseLibrary
+	url = git://nuuneoi.com/TheCheeseLibrary.git

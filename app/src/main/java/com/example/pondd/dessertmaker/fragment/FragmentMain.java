@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.inthecheesefactory.thecheeselibrary.R;
+import com.example.pondd.dessertmaker.R;
+
 
 /**
  * Created by nuuneoi on 11/16/2014.

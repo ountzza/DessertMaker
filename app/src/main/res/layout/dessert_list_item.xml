@@ -22,7 +22,9 @@
             android:text="Chocolate Cookies with Hazelnut Blah Blah Blah"
             android:textColor="#ffffffff"
             android:textSize="24sp"
-            android:id="@+id/topText"/>
+            android:id="@+id/topText"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +33,9 @@
             android:textColor="#ffffffff"
             android:textSize="18sp"
             android:id="@+id/bottomText"
-            android:layout_below="@id/topText"/>
+            android:layout_below="@id/topText"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
     </RelativeLayout>
 

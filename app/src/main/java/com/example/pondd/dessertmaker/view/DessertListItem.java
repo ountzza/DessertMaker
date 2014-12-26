@@ -53,4 +53,10 @@ public class DessertListItem extends RelativeLayout {
     private void initWithAttrs(AttributeSet attrs) {
 
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        imageView.getLayoutParams().height = widthMeasureSpec;
+        super.onMeasure(widthMeasureSpec, widthMeasureSpec);
+    }
 }

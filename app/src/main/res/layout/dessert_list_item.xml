@@ -6,9 +6,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/harley"
         android:adjustViewBounds="true"
-        android:id="@+id/imageView" />
+        android:id="@+id/imageView"
+        android:scaleType="centerCrop"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

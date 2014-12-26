@@ -22,7 +22,8 @@ compile project(':TheCheeseLibrary')
    - CustomView Template
    - CustomViewGroup Template
    - Singleton Template
-- add Fragemet in mainView
+- add Fragment in mainView
+- 
 =================
 ###API
 ```

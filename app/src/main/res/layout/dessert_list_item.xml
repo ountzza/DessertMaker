@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/harley"
         android:adjustViewBounds="true"
         android:id="@+id/imageView"
         android:scaleType="centerCrop" />
@@ -41,4 +41,11 @@
 
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_dessert_item_overlay"
+        android:alpha="0.8"
+        android:layout_alignBottom="@id/imageView"
+        android:layout_alignTop="@id/imageView" />
 </RelativeLayout>

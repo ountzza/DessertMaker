@@ -68,6 +68,11 @@ public class FragmentMain extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 swipeRefreshLayout.setEnabled(firstVisibleItem == 0);
+                if(firstVisibleItem+visibleItemCount>=totalItemCount){
+                    //loadmore
+                    //make sure it doesn't get call more than once at a time
+                    //
+                }
             }
         });
         loadData();

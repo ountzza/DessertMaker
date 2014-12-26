@@ -2,9 +2,12 @@ package com.example.pondd.dessertmaker.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.pondd.dessertmaker.R;
 import com.example.pondd.dessertmaker.dao.DessertItemDao;
 import com.example.pondd.dessertmaker.manager.DessertItemManager;
 import com.example.pondd.dessertmaker.view.DessertListItem;
@@ -13,6 +16,8 @@ import com.example.pondd.dessertmaker.view.DessertListItem;
  * Created by Pondd on 12/25/14 AD.
  */
 public class DessertListAdapter extends BaseAdapter {
+
+    private int lastPosition = 1;
 
     @Override
     public int getCount() {
@@ -59,6 +64,11 @@ public class DessertListAdapter extends BaseAdapter {
         item.setBottomText(dao.getDescription());
         item.setImageViewURL(dao.getImageUrl());
 
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(parent.getContext(), R.anim.fly_up);
+            item.startAnimation(animation);
+            lastPosition = position;
+        }
         return item;
     }
 }

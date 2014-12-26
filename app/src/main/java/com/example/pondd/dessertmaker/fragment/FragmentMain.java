@@ -6,9 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.pondd.dessertmaker.R;
 import com.example.pondd.dessertmaker.adapter.DessertListAdapter;
+import com.example.pondd.dessertmaker.dao.DessertItemCollectionDao;
+import com.example.pondd.dessertmaker.manager.DessertItemManager;
+import com.example.pondd.dessertmaker.manager.http.HTTPEngine;
+import com.example.pondd.dessertmaker.manager.http.HTTPEngineListener;
 
 
 /**
@@ -17,6 +22,7 @@ import com.example.pondd.dessertmaker.adapter.DessertListAdapter;
 public class FragmentMain extends Fragment {
 
     private ListView listView;
+    private DessertListAdapter mDessertListAdapter;
 
     public FragmentMain() {
         super();
@@ -41,7 +47,27 @@ public class FragmentMain extends Fragment {
         // init instance with rootView.findViewById here
         setRetainInstance(true);
         listView = (ListView) rootView.findViewById(R.id.ListView);
-        listView.setAdapter(new DessertListAdapter());
+        listView.setAdapter(mDessertListAdapter = new DessertListAdapter());
+
+
+        HTTPEngine.getInstance().loadDessertList(new HTTPEngineListener<DessertItemCollectionDao>() {
+            @Override
+            public void onResponse(DessertItemCollectionDao data, String rawData) {
+                if(data.isSuccess()){
+                    //Loaded and no error
+                    //Toast.makeText(getActivity(),data.getData()[0].getName(),Toast.LENGTH_SHORT).show();
+                    DessertItemManager.getInstance().setData(data);
+                    mDessertListAdapter.notifyDataSetChanged();
+                }else{
+                    //Loaded and not work
+                }
+            }
+
+            @Override
+            public void onFailure(DessertItemCollectionDao data, String rawData) {
+                // Not loaded
+            }
+        });
     }
 
     @Override

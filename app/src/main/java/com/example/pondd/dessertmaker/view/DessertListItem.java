@@ -59,4 +59,17 @@ public class DessertListItem extends RelativeLayout {
         imageView.getLayoutParams().height = widthMeasureSpec;
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
+
+    public void setTopText(String text){
+        topText.setText(text);
+    }
+
+    public void setBottomText(String text){
+        bottomText.setText(text);
+    }
+
+    public void setImageViewURL(String url){
+
+    }
+
 }

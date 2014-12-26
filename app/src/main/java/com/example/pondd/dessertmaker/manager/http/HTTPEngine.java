@@ -3,6 +3,7 @@ package com.example.pondd.dessertmaker.manager.http;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.example.pondd.dessertmaker.dao.DessertItemCollectionDao;
 import com.example.pondd.dessertmaker.manager.Contextor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -153,5 +154,9 @@ public class HTTPEngine {
         if (beforeId > 0)
             postData.put("before_id", beforeId + "");
         return loadPostUrl("http://nuuneoi.com/api/blog/list", postData, listener, BaseDao.class);
+    }
+    public Call loadDessertList(final HTTPEngineListener<DessertItemCollectionDao> listener){
+        Map<String, String> postData = new HashMap<String, String>();
+        return loadPostUrl("http://nuuneoi.com/courses/dessert_maker/list",postData,listener,DessertItemCollectionDao.class);
     }
 }

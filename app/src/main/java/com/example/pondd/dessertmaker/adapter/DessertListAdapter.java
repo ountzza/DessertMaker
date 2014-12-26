@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.pondd.dessertmaker.dao.DessertItemDao;
+import com.example.pondd.dessertmaker.manager.DessertItemManager;
 import com.example.pondd.dessertmaker.view.DessertListItem;
 
 /**
@@ -14,7 +16,11 @@ public class DessertListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 10000;
+        if (DessertItemManager.getInstance().getData() == null)
+            return 0;
+        if (DessertItemManager.getInstance().getData().getData() == null)
+            return 0;
+        return DessertItemManager.getInstance().getData().getData().length;
     }
 
     @Override
@@ -27,35 +33,32 @@ public class DessertListAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public int getViewTypeCount() {
-        return 2;
-    }
-
-    @Override
-    public int getItemViewType(int position){
-        return position % 2 == 0?0 : 1;
-    }
+//    @Override
+//    public int getViewTypeCount() {
+//        return 2;
+//    }
+//
+//    @Override
+//    public int getItemViewType(int position) {
+//        return position % 2 == 0 ? 0 : 1;
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (position % 2 == 0) {
-            TextView item;
-            if(convertView != null && convertView instanceof TextView)
-                item = (TextView)convertView;
-            else
-                item = new TextView(parent.getContext());
-            item.setText("RowCount"+position);
-            return item ;
-        } else {
-            DessertListItem item;
-            if (convertView != null && convertView instanceof DessertListItem)
-                item = (DessertListItem) convertView;
-            else
-                item = new DessertListItem(parent.getContext());
 
-            return item;
-        }
+        DessertListItem item;
+        if (convertView != null && convertView instanceof DessertListItem)
+            item = (DessertListItem) convertView;
+        else
+            item = new DessertListItem(parent.getContext());
 
+
+        //Set Data Here
+        DessertItemDao dao = DessertItemManager.getInstance().getData().getData()[position];
+        item.setTopText(dao.getName());
+        item.setBottomText(dao.getDescription());
+        item.setImageViewURL(dao.getImageUrl());
+
+        return item;
     }
 }

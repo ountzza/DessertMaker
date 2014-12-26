@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,8 +15,10 @@ import com.example.pondd.dessertmaker.R;
 import com.example.pondd.dessertmaker.adapter.DessertListAdapter;
 import com.example.pondd.dessertmaker.dao.DessertItemCollectionDao;
 import com.example.pondd.dessertmaker.manager.DessertItemManager;
+import com.example.pondd.dessertmaker.manager.bus.event.BusDessertListItem;
 import com.example.pondd.dessertmaker.manager.http.HTTPEngine;
 import com.example.pondd.dessertmaker.manager.http.HTTPEngineListener;
+import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 
 /**
@@ -51,6 +54,12 @@ public class FragmentMain extends Fragment {
         setRetainInstance(true);
         listView = (ListView) rootView.findViewById(R.id.ListView);
         listView.setAdapter(mDessertListAdapter = new DessertListAdapter());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainBus.getInstance().post(new BusDessertListItem(position));
+            }
+        });
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

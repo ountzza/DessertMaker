@@ -1,5 +1,6 @@
-package com.example.pondd.dessertmaker.view;
+package com.example.pondd.dessertmaker.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,9 @@ import android.view.MenuItem;
 
 import com.example.pondd.dessertmaker.R;
 import com.example.pondd.dessertmaker.fragment.FragmentMain;
+import com.example.pondd.dessertmaker.manager.bus.event.BusDessertListItem;
+import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
+import com.squareup.otto.Subscribe;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -61,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item))
+        if (actionBarDrawerToggle.onOptionsItemSelected(item))
             return true;
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -74,5 +78,24 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MainBus.getInstance().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MainBus.getInstance().unregister(this);
+    }
+
+    @Subscribe
+    public void busEventRecieved(BusDessertListItem event) {
+        Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+        intent.putExtra("position",event.getPosition());
+        startActivity(intent);
     }
 }

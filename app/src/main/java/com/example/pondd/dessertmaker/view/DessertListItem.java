@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pondd.dessertmaker.R;
+import com.inthecheesefactory.thecheeselibrary.manager.ImageLoaderManager;
 
 /**
  * Created by nuuneoi on 11/16/2014.
@@ -60,16 +61,16 @@ public class DessertListItem extends RelativeLayout {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
 
-    public void setTopText(String text){
+    public void setTopText(String text) {
         topText.setText(text);
     }
 
-    public void setBottomText(String text){
+    public void setBottomText(String text) {
         bottomText.setText(text);
     }
 
-    public void setImageViewURL(String url){
-
+    public void setImageViewURL(String url) {
+        ImageLoaderManager.getInstance().load(url, imageView);
     }
 
 }

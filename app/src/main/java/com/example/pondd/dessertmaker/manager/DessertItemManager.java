@@ -3,6 +3,7 @@ package com.example.pondd.dessertmaker.manager;
 import android.content.Context;
 
 import com.example.pondd.dessertmaker.dao.DessertItemCollectionDao;
+import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
 /**
  * Created by nuuneoi on 11/16/2014.

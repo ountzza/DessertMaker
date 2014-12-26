@@ -9,13 +9,14 @@
         android:src="@drawable/harley"
         android:adjustViewBounds="true"
         android:id="@+id/imageView"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#a0000000"
-        android:layout_alignBottom="@id/imageView">
+        android:layout_alignBottom="@id/imageView"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,7 +26,7 @@
             android:textSize="24sp"
             android:id="@+id/topText"
             android:maxLines="2"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             android:id="@+id/bottomText"
             android:layout_below="@id/topText"
             android:maxLines="2"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
     </RelativeLayout>
 

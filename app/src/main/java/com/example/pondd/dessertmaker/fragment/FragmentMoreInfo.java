@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pondd.dessertmaker.R;
+import com.inthecheesefactory.thecheeselibrary.view.SlidingTabLayout;
 
 
 /**
@@ -18,6 +19,7 @@ public class FragmentMoreInfo extends Fragment {
 
     private ViewPager viewPager;
     private int dessertPosition;
+    private SlidingTabLayout slidingTabLayout;
 
     public FragmentMoreInfo() {
         super();
@@ -60,12 +62,34 @@ public class FragmentMoreInfo extends Fragment {
 
             @Override
             public int getCount() {
+
                 return 3;
             }
+            @Override
+            public CharSequence getPageTitle ( int position){
+                switch (position) {
+                    case 0:
+                        return "Main";
+                    case 1:
+                        return "Ingredients";
+                    case 2:
+                        return "Directions";
+
+
+                }
+                return "";
+            }
         });
-        if (getArguments() != null) {
+
+        slidingTabLayout = (SlidingTabLayout) rootView.findViewById(R.id.slidingTabLayout);
+        slidingTabLayout.setViewPager(viewPager);
+
+        if (getArguments() != null)
+
+        {
             dessertPosition = getArguments().getInt("position");
         }
+
     }
 
     @Override

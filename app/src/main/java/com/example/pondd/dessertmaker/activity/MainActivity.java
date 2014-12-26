@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.example.pondd.dessertmaker.R;
 import com.example.pondd.dessertmaker.fragment.FragmentMain;
+import com.example.pondd.dessertmaker.fragment.FragmentMoreInfo;
 import com.example.pondd.dessertmaker.manager.bus.event.BusDessertListItem;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 import com.squareup.otto.Subscribe;
@@ -94,8 +96,19 @@ public class MainActivity extends ActionBarActivity {
 
     @Subscribe
     public void busEventRecieved(BusDessertListItem event) {
-        Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-        intent.putExtra("position",event.getPosition());
-        startActivity(intent);
+        FrameLayout moreInfoContainer = (FrameLayout)findViewById(R.id.moreInfoContainer);
+        if(moreInfoContainer==null){
+            // mobile
+            Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+            intent.putExtra("position",event.getPosition());
+            startActivity(intent);
+        }else{
+            // tablet
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.moreInfoContainer, FragmentMoreInfo.newInstance(event.getPosition()))
+                    .commit();
+        }
+
+
     }
 }

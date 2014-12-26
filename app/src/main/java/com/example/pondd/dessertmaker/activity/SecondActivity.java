@@ -1,11 +1,15 @@
 package com.example.pondd.dessertmaker.activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.pondd.dessertmaker.R;
+import com.example.pondd.dessertmaker.fragment.FragmentMain;
+import com.example.pondd.dessertmaker.fragment.FragmentMoreInfo;
+import com.example.pondd.dessertmaker.fragment.FragmentMoreInfoMain;
 
 public class SecondActivity extends ActionBarActivity {
 
@@ -15,9 +19,17 @@ public class SecondActivity extends ActionBarActivity {
         setContentView(R.layout.activity_second);
 
         initInstances();
+
+        int position = getIntent().getIntExtra("position", 0);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contentContainer, FragmentMoreInfo.newInstance(position))
+                    .commit();
+        }
     }
 
-    private void initInstances(){
+    private void initInstances() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
@@ -36,7 +48,7 @@ public class SecondActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(id == android.R.id.home){
+        if (id == android.R.id.home) {
             finish();
             return true;
         }

@@ -46,7 +46,7 @@ public class DessertListItem extends RelativeLayout {
     }
 
     private void initInstances() {
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageViewShow);
         topText = (TextView) findViewById(R.id.topText);
         bottomText = (TextView) findViewById(R.id.bottomText);
     }
